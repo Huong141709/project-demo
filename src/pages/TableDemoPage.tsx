@@ -3,17 +3,17 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { DataType } from "../types/table.type";
 import { dataSource } from "../data/tableData";
-import { AddModalTable } from "../component/AddModalTable";
+import { AddModalTable } from "../components/AddModalTable";
 
 export default function TableDemoPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
+  const handleOpenModal = () => {
+    setIsOpen(true);
   };
 
-  const handleModalCancel = () => {
-    setIsModalOpen(false);
+  const handleCloseModal = () => {
+    setIsOpen(false);
   };
 
   const columns: TableProps<DataType>["columns"] = [
@@ -58,13 +58,13 @@ export default function TableDemoPage() {
         dataSource={dataSource}
         title={() => (
           <p className="text-1xl font-bold">
-            <Button type="primary" onClick={showModal}>
+            <Button type="primary" onClick={handleOpenModal}>
               Add
             </Button>
           </p>
         )}
       />
-      <AddModalTable isOpen={isModalOpen} onCancel={handleModalCancel} />
+      <AddModalTable isOpen={isOpen} onCancel={handleCloseModal} />
     </>
   );
 }
