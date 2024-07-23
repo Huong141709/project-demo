@@ -1,4 +1,5 @@
 import {
+  isNumbers,
   isStrings,
   findDuplicates,
   arrayHasDuplicateValues,
@@ -6,6 +7,31 @@ import {
   create2DArray,
 } from "./array";
 
+describe("Check is array of number", () => {
+  test("Return true when given an array of numbers", () => {
+    const input: number[] = [1, 2, 3, 4];
+    const result = isNumbers(input);
+    expect(result).toBe(true);
+  });
+
+  test("Return false when given an array of string", () => {
+    const input: string[] = ["a", "b", "c"];
+    const result = isNumbers(input);
+    expect(result).toBe(false);
+  });
+
+  test("Return false when given an array of object", () => {
+    const input: object[] = [{ a: 1 }, { b: 2 }, { c: 3 }];
+    const result = isNumbers(input);
+    expect(result).toBe(false);
+  });
+
+  test("Return false when given an array of boolean", () => {
+    const input: boolean[] = [true, false, true];
+    const result = isNumbers(input);
+    expect(result).toBe(false);
+  });
+});
 describe("Check is array of string", () => {
   test("Return true when given an array of string", () => {
     const input: string[] = ["a", "b", "c"];

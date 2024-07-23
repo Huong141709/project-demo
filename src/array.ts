@@ -1,3 +1,11 @@
+export function isNumbers(array: unknown): array is number[] {
+  return (
+    Array.isArray(array) &&
+    array.length > 0 &&
+    array.every((e) => typeof e === "number")
+  );
+}
+
 export function isStrings(array: unknown): array is string[] {
   return Array.isArray(array) && array.every((e) => typeof e === "string");
 }
