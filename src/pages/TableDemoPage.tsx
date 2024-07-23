@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DataType } from "../types/table.type";
 import { dataSource } from "../data/tableData";
 import { AddModalTable } from "../components/AddModalTable";
+import React = require("react");
 
 export default function TableDemoPage() {
   const [isOpen, setIsOpen] = useState(false);

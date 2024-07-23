@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Select } from "antd";
-import { useEffect } from "react";
+import React from "react";
 
-type AddModalTableProps = {
+type addModalTableProps = {
   isOpen: boolean;
   onCancel: () => void;
   onSubmit: (values: { type: string; value: string }) => void;
@@ -13,16 +13,8 @@ export function AddModalTable({
   onCancel,
   onSubmit,
   initialValues,
-}: AddModalTableProps) {
+}: addModalTableProps) {
   const [form] = Form.useForm();
-
-  useEffect(() => {
-    if (initialValues) {
-      form.setFieldsValue(initialValues);
-    } else {
-      form.resetFields();
-    }
-  }, [initialValues, form]);
 
   const handleSubmit = () => {
     form.validateFields().then((values) => {
@@ -49,6 +41,7 @@ export function AddModalTable({
         <Form.Item
           name="type"
           rules={[{ required: true, message: "Please select a type" }]}
+          initialValue={initialValues?.type}
         >
           <Select placeholder="Select a type" className="w-full">
             <Select.Option value="Discipline">Discipline</Select.Option>
@@ -56,6 +49,7 @@ export function AddModalTable({
           </Select>
         </Form.Item>
         <Form.Item
+          initialValue={initialValues?.value}
           name="value"
           rules={[{ required: true, message: "Please input a value" }]}
         >
